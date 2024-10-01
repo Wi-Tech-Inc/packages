@@ -1192,7 +1192,7 @@ class PlatformMapConfiguration {
     this.trafficEnabled,
     this.buildingsEnabled,
     this.liteModeEnabled,
-    this.cloudMapId,
+    this.mapId,
     this.style,
   });
 
@@ -1232,7 +1232,7 @@ class PlatformMapConfiguration {
 
   bool? liteModeEnabled;
 
-  String? cloudMapId;
+  String? mapId;
 
   String? style;
 
@@ -1256,7 +1256,7 @@ class PlatformMapConfiguration {
       trafficEnabled,
       buildingsEnabled,
       liteModeEnabled,
-      cloudMapId,
+      mapId,
       style,
     ];
   }
@@ -1282,7 +1282,7 @@ class PlatformMapConfiguration {
       trafficEnabled: result[15] as bool?,
       buildingsEnabled: result[16] as bool?,
       liteModeEnabled: result[17] as bool?,
-      cloudMapId: result[18] as String?,
+      mapId: result[18] as String?,
       style: result[19] as String?,
     );
   }
