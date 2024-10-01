@@ -637,7 +637,8 @@ Future<O> _markerOptionsFromMarker<T, O>(
             marker.position.longitude,
           )
           ..title = sanitizeHtml(marker.infoWindow.title ?? '')
-          ..zIndex = marker.zIndex;
+          ..zIndex = marker.zIndex
+          ..gmpDraggable = marker.draggable;
     return options as O;
   } else {
     final gmaps.MarkerOptions options = gmaps.MarkerOptions()
