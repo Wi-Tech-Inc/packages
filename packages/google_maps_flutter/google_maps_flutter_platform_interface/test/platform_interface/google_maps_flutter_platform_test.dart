@@ -123,6 +123,16 @@ void main() {
     );
 
     test(
+      'default implementation of isAdvancedMarkersAvailable throws Unimplemented Error',
+      () async {
+        final GoogleMapsFlutterPlatform platform =
+            BuildViewGoogleMapsFlutterPlatform();
+        expect(() => platform.isAdvancedMarkersAvailable(mapId: 0),
+            throwsUnimplementedError);
+      },
+    );
+
+   test(
         'default implementation of `animateCameraWithConfiguration` delegates to `animateCamera`',
         () {
       final GoogleMapsFlutterPlatform platform =
