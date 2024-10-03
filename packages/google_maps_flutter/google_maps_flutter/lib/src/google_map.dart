@@ -128,6 +128,7 @@ class GoogleMap extends StatefulWidget {
     this.onTap,
     this.onLongPress,
     this.mapId,
+    this.markerType = MarkerType.legacy,
     @Deprecated('cloudMapId is deprecated. Use mapId instead') this.cloudMapId,
   });
 
@@ -363,6 +364,9 @@ class GoogleMap extends StatefulWidget {
   @Deprecated('cloudMapId is deprecated. Use mapId instead')
   final String? cloudMapId;
 
+  /// Indicates whether map should use [AdvancedMarker]s or [Marker]s.
+  final MarkerType markerType;
+
   /// Creates a [State] for this [GoogleMap].
   @override
   State createState() => _GoogleMapState();
@@ -396,6 +400,7 @@ class _GoogleMapState extends State<GoogleMap> {
             TextDirection.ltr,
         initialCameraPosition: widget.initialCameraPosition,
         gestureRecognizers: widget.gestureRecognizers,
+        markerType: widget.markerType,
       ),
       mapObjects: MapObjects(
         markers: widget.markers,
