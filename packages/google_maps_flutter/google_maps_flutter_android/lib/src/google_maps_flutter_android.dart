@@ -551,6 +551,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     required PlatformMapConfiguration mapConfiguration,
     required MapWidgetConfiguration widgetConfiguration,
     MapObjects mapObjects = const MapObjects(),
+    MarkerType markerType = MarkerType.legacy,
   }) {
     assert(
         mapObjects.groundOverlays.every((GroundOverlay groundOverlay) =>
@@ -637,6 +638,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     required MapWidgetConfiguration widgetConfiguration,
     MapConfiguration mapConfiguration = const MapConfiguration(),
     MapObjects mapObjects = const MapObjects(),
+    MarkerType markerType = MarkerType.legacy,
   }) {
     return _buildView(
       creationId,
@@ -662,13 +664,16 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     Set<ClusterManager> clusterManagers = const <ClusterManager>{},
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
     Map<String, dynamic> mapOptions = const <String, dynamic>{},
+    MarkerType markerType = MarkerType.legacy,
   }) {
     return _buildView(
       creationId,
       onPlatformViewCreated,
       widgetConfiguration: MapWidgetConfiguration(
-          initialCameraPosition: initialCameraPosition,
-          textDirection: textDirection),
+        initialCameraPosition: initialCameraPosition,
+        textDirection: textDirection,
+        markerType: markerType,
+      ),
       mapObjects: MapObjects(
           markers: markers,
           polygons: polygons,
@@ -677,6 +682,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
           clusterManagers: clusterManagers,
           tileOverlays: tileOverlays),
       mapConfiguration: _platformMapConfigurationFromOptionsJson(mapOptions),
+      markerType: markerType,
     );
   }
 
@@ -693,6 +699,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     Set<ClusterManager> clusterManagers = const <ClusterManager>{},
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
     Map<String, dynamic> mapOptions = const <String, dynamic>{},
+    MarkerType markerType = MarkerType.legacy,
   }) {
     return buildViewWithTextDirection(
       creationId,
@@ -707,6 +714,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
       clusterManagers: clusterManagers,
       gestureRecognizers: gestureRecognizers,
       mapOptions: mapOptions,
+      markerType: markerType,
     );
   }
 
@@ -802,7 +810,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
       clusterManagerId: marker.clusterManagerId?.value,
       isAdvanced: marker is AdvancedMarker,
       collisionBehavior: marker is AdvancedMarker
-          ? _platformPlatformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
+          ? _platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
               marker.collisionBehavior,
             )
           : PlatformMarkerCollisionBehavior.required,
@@ -1433,7 +1441,7 @@ PlatformPatternItem platformPatternItemFromPatternItem(PatternItem item) {
 
 @visibleForTesting
 PlatformMarkerCollisionBehavior
-    _platformPlatformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
+    _platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
   MarkerCollisionBehavior markerCollisionBehavior,
 ) {
   switch (markerCollisionBehavior) {

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
+import 'advanced_marker_icons.dart';
+import 'advanced_markers_clustering.dart';
 import 'animate_camera.dart';
 import 'clustering.dart';
 import 'ground_overlay.dart';
@@ -20,6 +22,7 @@ import 'marker_icons.dart';
 import 'move_camera.dart';
 import 'padding.dart';
 import 'page.dart';
+import 'place_advanced_marker.dart';
 import 'place_circle.dart';
 import 'place_marker.dart';
 import 'place_polygon.dart';
@@ -39,7 +42,9 @@ final List<GoogleMapExampleAppPage> _allPages = <GoogleMapExampleAppPage>[
   const AnimateCameraPage(),
   const MoveCameraPage(),
   const PlaceMarkerPage(),
+  const PlaceAdvancedMarkerPage(),
   const MarkerIconsPage(),
+  const AdvancedMarkerIconsPage(),
   const ScrollingMapPage(),
   const PlacePolylinePage(),
   const PlacePolygonPage(),
@@ -50,6 +55,7 @@ final List<GoogleMapExampleAppPage> _allPages = <GoogleMapExampleAppPage>[
   const TileOverlayPage(),
   const GroundOverlayPage(),
   const ClusteringPage(),
+  const AdvancedMarkersClustering(),
   const MapIdPage(),
 ];
 
