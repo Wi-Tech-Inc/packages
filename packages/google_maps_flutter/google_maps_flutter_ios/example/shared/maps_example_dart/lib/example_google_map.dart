@@ -215,6 +215,12 @@ class ExampleGoogleMapController {
     return GoogleMapsFlutterPlatform.instance.getStyleError(mapId: mapId);
   }
 
+  /// Returns true if [AdvancedMarker]s can be used with this map
+  Future<bool> isAdvancedMarkersAvailable() {
+    return GoogleMapsFlutterPlatform.instance
+        .isAdvancedMarkersAvailable(mapId: mapId);
+  }
+
   /// Disposes of the platform resources
   void dispose() {
     GoogleMapsFlutterPlatform.instance.dispose(mapId: mapId);
@@ -260,6 +266,7 @@ class ExampleGoogleMap extends StatefulWidget {
     this.onCameraMoveStarted,
     this.tileOverlays = const <TileOverlay>{},
     this.groundOverlays = const <GroundOverlay>{},
+    this.markerType = MarkerType.legacy,
     this.onCameraMove,
     this.onCameraIdle,
     this.onTap,
@@ -385,6 +392,9 @@ class ExampleGoogleMap extends StatefulWidget {
   /// The locally configured style for the map.
   final String? style;
 
+  /// The type of marker to use (legacy or advanced)
+  final MarkerType markerType;
+
   /// Creates a [State] for this [ExampleGoogleMap].
   @override
   State createState() => _ExampleGoogleMapState();
@@ -417,6 +427,7 @@ class _ExampleGoogleMapState extends State<ExampleGoogleMap> {
             TextDirection.ltr,
         initialCameraPosition: widget.initialCameraPosition,
         gestureRecognizers: widget.gestureRecognizers,
+        markerType: widget.markerType,
       ),
       mapObjects: MapObjects(
         markers: widget.markers,
