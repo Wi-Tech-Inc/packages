@@ -107,6 +107,13 @@
   self.marker.zIndex = zIndex;
 }
 
+- (void)setCollisionBehavior:(int)collisionBehavior {
+  if ([self.marker isKindOfClass:[GMSAdvancedMarker class]]) {
+    GMSCollisionBehavior collitionBehaviorValue = (GMSCollisionBehavior)collisionBehavior;
+    [(GMSAdvancedMarker *)self.marker setCollisionBehavior:(collitionBehaviorValue)];
+  }
+}
+
 - (void)updateFromPlatformMarker:(FGMPlatformMarker *)platformMarker
                        registrar:(NSObject<FlutterPluginRegistrar> *)registrar
                      screenScale:(CGFloat)screenScale {
@@ -120,6 +127,7 @@
   [self setPosition:FGMGetCoordinateForPigeonLatLng(platformMarker.position)];
   [self setRotation:platformMarker.rotation];
   [self setZIndex:platformMarker.zIndex];
+  [self setCollisionBehavior:platformMarker.collisionBehavior]
   FGMPlatformInfoWindow *infoWindow = platformMarker.infoWindow;
   [self setInfoWindowAnchor:FGMGetCGPointForPigeonPoint(infoWindow.anchor)];
   if (infoWindow.title) {
@@ -169,7 +177,10 @@
   CLLocationCoordinate2D position = FGMGetCoordinateForPigeonLatLng(markerToAdd.position);
   NSString *markerIdentifier = markerToAdd.markerId;
   NSString *clusterManagerIdentifier = markerToAdd.clusterManagerId;
-  GMSMarker *marker = [GMSMarker markerWithPosition:position];
+  NSNumber *isAdvanced = markerToAdd[@"isAdvanced"];
+  GMSMarker *marker = isAdvanced ? [GMSAdvancedMarker markerWithPosition:position]
+                                 : [GMSMarker markerWithPosition:position];
+
   FLTGoogleMapMarkerController *controller =
       [[FLTGoogleMapMarkerController alloc] initWithMarker:marker
                                           markerIdentifier:markerIdentifier
