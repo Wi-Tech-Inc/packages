@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:maps_example_dart/advanced_marker_icons.dart';
+import 'package:maps_example_dart/advanced_markers_clustering.dart';
 import 'package:maps_example_dart/animate_camera.dart';
 import 'package:maps_example_dart/clustering.dart';
 import 'package:maps_example_dart/ground_overlay.dart';
@@ -16,6 +18,7 @@ import 'package:maps_example_dart/marker_icons.dart';
 import 'package:maps_example_dart/move_camera.dart';
 import 'package:maps_example_dart/padding.dart';
 import 'package:maps_example_dart/page.dart';
+import 'package:maps_example_dart/place_advanced_marker.dart';
 import 'package:maps_example_dart/place_circle.dart';
 import 'package:maps_example_dart/place_marker.dart';
 import 'package:maps_example_dart/place_polygon.dart';
@@ -23,6 +26,10 @@ import 'package:maps_example_dart/place_polyline.dart';
 import 'package:maps_example_dart/scrolling_map.dart';
 import 'package:maps_example_dart/snapshot.dart';
 import 'package:maps_example_dart/tile_overlay.dart';
+
+/// Map Id is required for some examples to use advanced markers
+// ignore: unnecessary_nullable_for_final_variable_declarations, unreachable_from_main
+const String? mapId = null;
 
 void main() {
   runApp(const MaterialApp(
@@ -33,7 +40,9 @@ void main() {
     AnimateCameraPage(),
     MoveCameraPage(),
     PlaceMarkerPage(),
+    PlaceAdvancedMarkerPage(mapId: mapId),
     MarkerIconsPage(),
+    AdvancedMarkerIconsPage(mapId: mapId),
     ScrollingMapPage(),
     PlacePolylinePage(),
     PlacePolygonPage(),
@@ -44,6 +53,7 @@ void main() {
     TileOverlayPage(),
     GroundOverlayPage(),
     ClusteringPage(),
+    AdvancedMarkersClusteringPage(mapId: mapId),
     MapIdPage(),
   ])));
 }
