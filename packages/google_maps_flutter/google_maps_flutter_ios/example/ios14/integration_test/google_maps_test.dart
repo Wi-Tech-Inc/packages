@@ -21,7 +21,7 @@ const CameraPosition _kInitialCameraPosition = CameraPosition(
   target: _kInitialMapCenter,
   zoom: _kInitialZoomLevel,
 );
-const String _kCloudMapId = '000000000000000'; // Dummy map ID.
+const String _kMapId = '000000000000000'; // Dummy map ID.
 
 // The tolerance value for floating-point comparisons in the tests.
 // This value was selected as the minimum possible value that the test passes.
@@ -1138,7 +1138,7 @@ void main() {
       child: ExampleGoogleMap(
         key: key,
         initialCameraPosition: _kInitialCameraPosition,
-        cloudMapId: _kCloudMapId,
+        mapId: _kMapId,
       ),
     ));
   });

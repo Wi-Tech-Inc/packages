@@ -147,6 +147,7 @@
 @property(weak, nonatomic, nullable) FGMClusterManagersController *clusterManagersController;
 @property(weak, nonatomic) NSObject<FlutterPluginRegistrar> *registrar;
 @property(weak, nonatomic) GMSMapView *mapView;
+@property(nonatomic) FGMPlatformMarkerType markerType;
 
 @end
 
@@ -155,7 +156,8 @@
 - (instancetype)initWithMapView:(GMSMapView *)mapView
                 callbackHandler:(FGMMapsCallbackApi *)callbackHandler
       clusterManagersController:(nullable FGMClusterManagersController *)clusterManagersController
-                      registrar:(NSObject<FlutterPluginRegistrar> *)registrar {
+                      registrar:(NSObject<FlutterPluginRegistrar> *)registrar
+                     markerType:(FGMPlatformMarkerType)markerType {
   self = [super init];
   if (self) {
     _callbackHandler = callbackHandler;
@@ -163,6 +165,7 @@
     _clusterManagersController = clusterManagersController;
     _markerIdentifierToController = [[NSMutableDictionary alloc] init];
     _registrar = registrar;
+    _markerType = markerType;
   }
   return self;
 }
@@ -177,9 +180,9 @@
   CLLocationCoordinate2D position = FGMGetCoordinateForPigeonLatLng(markerToAdd.position);
   NSString *markerIdentifier = markerToAdd.markerId;
   NSString *clusterManagerIdentifier = markerToAdd.clusterManagerId;
-  NSNumber *isAdvanced = markerToAdd[@"isAdvanced"];
-  GMSMarker *marker = isAdvanced ? [GMSAdvancedMarker markerWithPosition:position]
-                                 : [GMSMarker markerWithPosition:position];
+    GMSMarker *marker = (self.markerType == FGMPlatformMarkerTypeAdvanced)
+                          ? [GMSAdvancedMarker markerWithPosition:position]
+                          : [GMSMarker markerWithPosition:position];
 
   FLTGoogleMapMarkerController *controller =
       [[FLTGoogleMapMarkerController alloc] initWithMarker:marker

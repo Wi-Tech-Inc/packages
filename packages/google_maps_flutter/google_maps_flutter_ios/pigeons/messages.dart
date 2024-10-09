@@ -399,6 +399,7 @@ class PlatformMapViewCreationParams {
     required this.initialTileOverlays,
     required this.initialClusterManagers,
     required this.initialGroundOverlays,
+    required this.markerType,
   });
 
   final PlatformCameraPosition initialCameraPosition;
