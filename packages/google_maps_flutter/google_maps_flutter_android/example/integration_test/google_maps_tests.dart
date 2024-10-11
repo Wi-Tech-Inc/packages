@@ -21,7 +21,7 @@ const CameraPosition _kInitialCameraPosition = CameraPosition(
   target: _kInitialMapCenter,
   zoom: _kInitialZoomLevel,
 );
-const String _kCloudMapId = '000000000000000'; // Dummy map ID.
+const String _kMapId = '000000000000000'; // Dummy map ID.
 
 // The tolerance value for floating-point comparisons in the tests.
 // This value was selected as the minimum possible value that the test passes.
@@ -1280,7 +1280,7 @@ void googleMapsTests() {
   });
 
   testWidgets(
-    'testCloudMapId',
+    'testMapId',
     (WidgetTester tester) async {
       final Completer<int> mapIdCompleter = Completer<int>();
       final Key key = GlobalKey();
@@ -1294,7 +1294,7 @@ void googleMapsTests() {
             onMapCreated: (ExampleGoogleMapController controller) {
               mapIdCompleter.complete(controller.mapId);
             },
-            mapId: _kCloudMapId,
+            mapId: _kMapId,
           ),
         ),
       );

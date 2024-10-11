@@ -105,6 +105,7 @@
                 initialTileOverlays:@[]
              initialClusterManagers:@[]
               initialGroundOverlays:@[]];
+markerType:FGMPlatformMarkerTypeLegacy];
 }
 
 @end
