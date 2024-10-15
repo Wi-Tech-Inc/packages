@@ -49,13 +49,13 @@ class GoogleMapController {
       switch (widgetConfiguration.markerType) {
         case MarkerType.legacy:
           assert(
-            markerTypes.first is Marker,
+            markerTypes.first == Marker,
             'All markers must be of type Marker because '
             'widgetConfiguration.markerType is MarkerType.legacy',
           );
         case MarkerType.advanced:
           assert(
-            markerTypes.first is AdvancedMarker,
+            markerTypes.first == AdvancedMarker,
             'All markers must be of type AdvancedMarker because '
             'widgetConfiguration.markerType is MarkerType.advanced',
           );
