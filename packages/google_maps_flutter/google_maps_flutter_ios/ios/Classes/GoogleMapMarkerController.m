@@ -123,12 +123,14 @@
   [self setRotation:platformMarker.rotation];
   [self setVisible:platformMarker.visible];
   [self setZIndex:platformMarker.zIndex];
+  [self setCollisionBehavior:platformMarker.collisionBehavior];
+
 }
-- (void)setCollisionBehavior:(int)collisionBehavior {
-  if ([self.marker isKindOfClass:[GMSAdvancedMarker class]]) {
-    GMSCollisionBehavior collitionBehaviorValue = (GMSCollisionBehavior)collisionBehavior;
-    [(GMSAdvancedMarker *)self.marker setCollisionBehavior:(collitionBehaviorValue)];
-  }
+- (void)setCollisionBehavior:(FGMMarkerCollisionBehaviorBox*)collisionBehavior {
+    if ([self.marker isKindOfClass:[GMSAdvancedMarker class]]) {
+        GMSCollisionBehavior collitionBehaviorValue = (GMSCollisionBehavior)collisionBehavior.value;
+        [(GMSAdvancedMarker *)self.marker setCollisionBehavior:(collitionBehaviorValue)];
+    }
 }
 
 - (void)updateFromPlatformMarker:(FGMPlatformMarker *)platformMarker
