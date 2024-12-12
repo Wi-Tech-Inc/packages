@@ -465,9 +465,7 @@ class PlatformMapViewCreationParams {
 }
 
 enum PlatformMarkerType {
-  marker,
-  advancedMarker,
-}
+marker, advancedMarker,}
 
 /// Pigeon equivalent of MapConfiguration.
 class PlatformMapConfiguration {
