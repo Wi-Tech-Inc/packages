@@ -1462,7 +1462,7 @@ PlatformPatternItem platformPatternItemFromPatternItem(PatternItem item) {
 }
 
 /// Converts a MarkerCollisionBehavior to Pigeon's
-/// PlatformMarkerCollisionBehavior
+/// PlatformMarkerCollisionBehavior.
 @visibleForTesting
 PlatformMarkerCollisionBehavior
     platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(

@@ -40,7 +40,7 @@ class GoogleMapController {
     _polylinesController = PolylinesController(stream: _streamController);
 
     // Check if all markers are of the same type. Mixing marker types is not
-    // allowed
+    // allowed.
     final Set<Type> markerTypes =
         _markers.map((Marker e) => e.runtimeType).toSet();
     if (markerTypes.isNotEmpty) {
@@ -63,7 +63,7 @@ class GoogleMapController {
     }
 
     // Advanced and legacy markers are handled differently so markers controller
-    // and cluster manager need be initialized with the correct marker type
+    // and cluster manager need be initialized with the correct marker type.
     _clusterManagersController = switch (widgetConfiguration.markerType) {
       MarkerType.marker =>
         ClusterManagersController<gmaps.Marker>(stream: _streamController),
@@ -613,7 +613,7 @@ class GoogleMapController {
     return _markersController?.isInfoWindowShown(markerId) ?? false;
   }
 
-  /// Returns true if this map supports [AdvancedMarker]s
+  /// Returns true if this map supports [AdvancedMarker]s.
   bool isAdvancedMarkersAvailable() {
     assert(_googleMap != null, 'Cannot get map capabilities of a null map.');
 
