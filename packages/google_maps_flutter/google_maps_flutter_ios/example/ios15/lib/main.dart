@@ -28,8 +28,7 @@ import 'package:maps_example_dart/snapshot.dart';
 import 'package:maps_example_dart/tile_overlay.dart';
 
 /// Map ID is required for some examples to use advanced markers.
-// ignore: unnecessary_nullable_for_final_variable_declarations, unreachable_from_main
-const String? mapId = null;
+const String? _mapId = null;
 
 void main() {
   runApp(const MaterialApp(
@@ -40,9 +39,9 @@ void main() {
     AnimateCameraPage(),
     MoveCameraPage(),
     PlaceMarkerPage(),
-    PlaceAdvancedMarkerPage(mapId: mapId),
+    PlaceAdvancedMarkerPage(mapId: _mapId),
     MarkerIconsPage(),
-    AdvancedMarkerIconsPage(mapId: mapId),
+    AdvancedMarkerIconsPage(mapId: _mapId),
     ScrollingMapPage(),
     PlacePolylinePage(),
     PlacePolygonPage(),
@@ -53,7 +52,7 @@ void main() {
     TileOverlayPage(),
     GroundOverlayPage(),
     ClusteringPage(),
-    AdvancedMarkersClusteringPage(mapId: mapId),
+    AdvancedMarkersClusteringPage(mapId: _mapId),
     MapIdPage(),
   ])));
 }
