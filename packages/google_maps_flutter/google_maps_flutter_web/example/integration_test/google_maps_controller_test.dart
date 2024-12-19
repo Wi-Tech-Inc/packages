@@ -68,7 +68,6 @@ void main() {
         widgetConfiguration: MapWidgetConfiguration(
           initialCameraPosition: initialCameraPosition,
           textDirection: TextDirection.ltr,
-          markerType: MarkerType.marker,
         ),
         mapObjects: mapObjects,
         mapConfiguration: mapConfiguration,

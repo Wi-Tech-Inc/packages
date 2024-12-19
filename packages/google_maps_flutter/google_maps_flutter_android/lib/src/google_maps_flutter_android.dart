@@ -550,7 +550,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     PlatformViewCreatedCallback onPlatformViewCreated, {
     required PlatformMapConfiguration mapConfiguration,
     required MapWidgetConfiguration widgetConfiguration,
-    required MarkerType markerType,
     MapObjects mapObjects = const MapObjects(),
   }) {
     assert(
@@ -647,7 +646,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
       mapObjects: mapObjects,
       mapConfiguration:
           _platformMapConfigurationFromMapConfiguration(mapConfiguration),
-      markerType: widgetConfiguration.markerType,
     );
   }
 
@@ -673,7 +671,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
       widgetConfiguration: MapWidgetConfiguration(
         initialCameraPosition: initialCameraPosition,
         textDirection: textDirection,
-        markerType: markerType,
       ),
       mapObjects: MapObjects(
           markers: markers,
@@ -683,7 +680,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
           clusterManagers: clusterManagers,
           tileOverlays: tileOverlays),
       mapConfiguration: _platformMapConfigurationFromOptionsJson(mapOptions),
-      markerType: markerType,
     );
   }
 
@@ -945,13 +941,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
             cameraUpdate:
                 PlatformCameraUpdateScrollBy(dx: update.dx, dy: update.dy));
     }
-  }
-
-  PlatformMarkerType _platformMarkerTypeFromMarkerType(MarkerType markerType) {
-    return switch (markerType) {
-      MarkerType.marker => PlatformMarkerType.marker,
-      MarkerType.advancedMarker => PlatformMarkerType.advancedMarker,
-    };
   }
 
   /// Convert [MapBitmapScaling] from platform interface to [PlatformMapBitmapScaling] Pigeon.
@@ -1299,6 +1288,14 @@ PlatformEdgeInsets? _platformEdgeInsetsFromEdgeInsets(EdgeInsets? insets) {
           right: insets.right);
 }
 
+PlatformMarkerType? _platformMarkerTypeFromMarkerType(MarkerType? markerType) {
+  return switch (markerType) {
+    null => null,
+    MarkerType.marker => PlatformMarkerType.marker,
+    MarkerType.advancedMarker => PlatformMarkerType.advancedMarker,
+  };
+}
+
 PlatformMapConfiguration _platformMapConfigurationFromMapConfiguration(
     MapConfiguration config) {
   return PlatformMapConfiguration(
@@ -1322,6 +1319,7 @@ PlatformMapConfiguration _platformMapConfigurationFromMapConfiguration(
     trafficEnabled: config.trafficEnabled,
     buildingsEnabled: config.buildingsEnabled,
     liteModeEnabled: config.liteModeEnabled,
+    markerType: _platformMarkerTypeFromMarkerType(config.markerType),
     mapId: config.mapId,
     style: config.style,
   );
@@ -1363,6 +1361,7 @@ PlatformMapConfiguration _platformMapConfigurationFromOptionsJson(
     trafficEnabled: options['trafficEnabled'] as bool?,
     buildingsEnabled: options['buildingsEnabled'] as bool?,
     liteModeEnabled: options['liteModeEnabled'] as bool?,
+    markerType: _platformMarkerTypeFromIndex(options['markerType'] as int?),
     mapId: options['mapId'] as String?,
     style: options['style'] as String?,
   );
@@ -1428,6 +1427,14 @@ PlatformZoomRange? _platformZoomRangeFromMinMaxZoomPreferenceJson(
   final List<double?> minMaxZoom =
       (zoomPrefsJson as List<Object?>).cast<double?>();
   return PlatformZoomRange(min: minMaxZoom[0], max: minMaxZoom[1]);
+}
+
+PlatformMarkerType _platformMarkerTypeFromIndex(int? index) {
+  return switch (index) {
+    0 => PlatformMarkerType.marker,
+    1 => PlatformMarkerType.advancedMarker,
+    _ => PlatformMarkerType.marker,
+  };
 }
 
 /// Converts platform interface's JointType to Pigeon's PlatformJointType.

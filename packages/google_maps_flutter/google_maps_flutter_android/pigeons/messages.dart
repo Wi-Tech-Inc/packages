@@ -490,6 +490,7 @@ class PlatformMapConfiguration {
     required this.trafficEnabled,
     required this.buildingsEnabled,
     required this.liteModeEnabled,
+    required this.markerType,
     required this.mapId,
     required this.style,
   });
@@ -512,6 +513,7 @@ class PlatformMapConfiguration {
   final bool? trafficEnabled;
   final bool? buildingsEnabled;
   final bool? liteModeEnabled;
+  final PlatformMarkerType? markerType;
   final String? mapId;
   final String? style;
 }

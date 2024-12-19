@@ -421,7 +421,6 @@ class _ExampleGoogleMapState extends State<ExampleGoogleMap> {
             TextDirection.ltr,
         initialCameraPosition: widget.initialCameraPosition,
         gestureRecognizers: widget.gestureRecognizers,
-        markerType: widget.markerType,
       ),
       mapObjects: MapObjects(
         markers: widget.markers,
