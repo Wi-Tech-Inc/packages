@@ -162,7 +162,7 @@
     NSString *pigeonSuffix = [NSString stringWithFormat:@"%lld", viewId];
     _dartCallbackHandler = [[FGMMapsCallbackApi alloc] initWithBinaryMessenger:registrar.messenger
                                                           messageChannelSuffix:pigeonSuffix];
-    FGMPlatformMarkerType markerType = creationParameters.markerType;
+    FGMPlatformMarkerTypeBox* markerType = creationParameters.mapConfiguration.markerType;
     _mapView.delegate = self;
     _mapView.paddingAdjustmentBehavior = kGMSMapViewPaddingAdjustmentBehaviorNever;
     _registrar = registrar;
@@ -173,7 +173,7 @@
                                                        callbackHandler:_dartCallbackHandler
                                              clusterManagersController:_clusterManagersController
                                                              registrar:registrar
-                                                            markerType:markerType];
+                                                            markerType:markerType.value];
     _polygonsController = [[FLTPolygonsController alloc] initWithMapView:_mapView
                                                          callbackHandler:_dartCallbackHandler
                                                                registrar:registrar];

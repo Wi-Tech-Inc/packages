@@ -663,7 +663,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     Set<ClusterManager> clusterManagers = const <ClusterManager>{},
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
     Map<String, dynamic> mapOptions = const <String, dynamic>{},
-    MarkerType markerType = MarkerType.marker,
   }) {
     return _buildView(
       creationId,
@@ -696,7 +695,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
     Set<ClusterManager> clusterManagers = const <ClusterManager>{},
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
     Map<String, dynamic> mapOptions = const <String, dynamic>{},
-    MarkerType markerType = MarkerType.marker,
   }) {
     return buildViewWithTextDirection(
       creationId,
@@ -711,7 +709,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
       clusterManagers: clusterManagers,
       gestureRecognizers: gestureRecognizers,
       mapOptions: mapOptions,
-      markerType: markerType,
     );
   }
 
