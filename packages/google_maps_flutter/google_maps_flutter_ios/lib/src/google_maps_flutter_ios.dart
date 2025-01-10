@@ -924,7 +924,7 @@ class GoogleMapsFlutterIOS extends GoogleMapsFlutterPlatform {
                 ),
               ),
             );
-          default:
+          case null:
             return PlatformBitmap(
               bitmap: PlatformBitmapPinConfig(
                 backgroundColor: backgroundColor,
