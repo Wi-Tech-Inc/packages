@@ -414,6 +414,7 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
   BitmapDescriptor bitmapDescriptor, {
   required double? opacity,
   required bool isVisible,
+  required double? rotation,
 }) async {
   if (bitmapDescriptor is PinConfig) {
     final gmaps.PinElementOptions options = gmaps.PinElementOptions()
@@ -445,6 +446,7 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
           opacity: 1.0,
           // Always visible, as the visibility is handled by the parent marker.
           isVisible: true,
+          rotation: rotation,
         );
         options.glyph = glyphBitmap;
       case null:
@@ -455,7 +457,8 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
     final HTMLElement htmlElement = pinElement.element;
     htmlElement.style
       ..visibility = isVisible ? 'visible' : 'hidden'
-      ..opacity = opacity?.toString() ?? '1.0';
+      ..opacity = opacity?.toString() ?? '1.0'
+      ..transform = rotation != null ? 'rotate(${rotation}deg)' : '';
     return htmlElement;
   }
 
@@ -623,6 +626,7 @@ Future<O> _markerOptionsFromMarker<T, O>(
             marker.icon,
             opacity: marker.alpha,
             isVisible: marker.visible,
+            rotation: marker.rotation,
           )
           ..position = gmaps.LatLng(
             marker.position.latitude,
@@ -644,11 +648,12 @@ Future<O> _markerOptionsFromMarker<T, O>(
       ..visible = marker.visible
       ..opacity = marker.alpha
       ..draggable = marker.draggable;
+
+    // TODO(ditman): Compute anchor properly, otherwise infowindows attach to the wrong spot.
+    // Flat and Rotation are not supported directly on the web.
+
     return options as O;
   }
-
-  // TODO(ditman): Compute anchor properly, otherwise infowindows attach to the wrong spot.
-  // Flat and Rotation are not supported directly on the web.
 }
 
 gmaps.CircleOptions _circleOptionsFromCircle(Circle circle) {
