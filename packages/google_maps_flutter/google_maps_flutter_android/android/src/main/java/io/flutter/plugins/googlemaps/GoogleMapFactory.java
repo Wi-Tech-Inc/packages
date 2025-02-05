@@ -53,6 +53,7 @@ public class GoogleMapFactory extends PlatformViewFactory {
       builder.setMapId(mapId);
     }
 
-    return builder.build(id, context, binaryMessenger, lifecycleProvider, mapConfig.getMarkerType());
+    return builder.build(
+        id, context, binaryMessenger, lifecycleProvider, mapConfig.getMarkerType());
   }
 }
