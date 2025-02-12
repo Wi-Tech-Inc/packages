@@ -594,6 +594,7 @@ enum PlatformMapBitmapScaling {
   none,
 }
 
+/// Pigeon equivalent of [PinConfig].
 class PlatformBitmapPinConfig {
   PlatformBitmapPinConfig({
     required this.backgroundColor,
