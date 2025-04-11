@@ -15,7 +15,6 @@ export 'cluster_manager.dart';
 export 'cluster_manager_updates.dart';
 export 'ground_overlay.dart';
 export 'ground_overlay_updates.dart';
-export 'glyph.dart';
 export 'heatmap.dart';
 export 'heatmap_updates.dart';
 export 'joint_type.dart';

@@ -407,7 +407,6 @@ class PlatformMapViewCreationParams {
     required this.initialTileOverlays,
     required this.initialClusterManagers,
     required this.initialGroundOverlays,
-    required this.markerType,
   });
 
   final PlatformCameraPosition initialCameraPosition;
@@ -420,7 +419,6 @@ class PlatformMapViewCreationParams {
   final List<PlatformTileOverlay> initialTileOverlays;
   final List<PlatformClusterManager> initialClusterManagers;
   final List<PlatformGroundOverlay> initialGroundOverlays;
-  final PlatformMarkerType markerType;
 }
 
 enum PlatformMarkerType {

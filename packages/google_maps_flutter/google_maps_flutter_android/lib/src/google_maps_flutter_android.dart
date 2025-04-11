@@ -581,7 +581,6 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
       initialGroundOverlays: mapObjects.groundOverlays
           .map(_platformGroundOverlayFromGroundOverlay)
           .toList(),
-      markerType: _platformMarkerTypeFromMarkerType(markerType),
     );
 
     const String viewType = 'plugins.flutter.dev/google_maps_android';

@@ -323,18 +323,6 @@ void _setIconSize({
   icon.scaledSize = gmapsSize;
 }
 
-void _setIconAnchor({
-  required Size size,
-  required Offset anchor,
-  required gmaps.Icon icon,
-}) {
-  final gmaps.Point gmapsAnchor = gmaps.Point(
-    size.width * anchor.dx,
-    size.height * anchor.dy,
-  );
-  icon.anchor = gmapsAnchor;
-}
-
 /// Determines the appropriate size for a bitmap based on its descriptor.
 ///
 /// This method returns the icon's size based on the provided [width] and
@@ -534,8 +522,8 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
 
 // Converts a [BitmapDescriptor] into a [gmaps.Icon] that can be used in Markers.
 Future<gmaps.Icon?> _gmIconFromBitmapDescriptor(
-    BitmapDescriptor bitmapDescriptor,
-    Offset anchor,
+  BitmapDescriptor bitmapDescriptor,
+  Offset anchor,
 ) async {
   gmaps.Icon? icon;
 
@@ -642,7 +630,7 @@ Future<O> _markerOptionsFromMarker<T, O>(
         marker.position.latitude,
         marker.position.longitude,
       )
-      ..icon = await _gmIconFromBitmapDescriptor(marker.icon)
+      ..icon = await _gmIconFromBitmapDescriptor(marker.icon, marker.anchor)
       ..title = sanitizeHtml(marker.infoWindow.title ?? '')
       ..zIndex = marker.zIndex
       ..visible = marker.visible

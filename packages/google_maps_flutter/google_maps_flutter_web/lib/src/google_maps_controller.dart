@@ -52,7 +52,7 @@ class GoogleMapController {
           assert(
             markerTypes.first == Marker,
             'All markers must be of type Marker because '
-            'mapConfiguration.markerType is MarkerType.legacy',
+            'mapConfiguration.markerType is MarkerType.marker',
           );
         case MarkerType.advancedMarker:
           assert(

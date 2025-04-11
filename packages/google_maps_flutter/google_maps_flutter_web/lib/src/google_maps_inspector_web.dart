@@ -105,7 +105,7 @@ class GoogleMapsInspectorWeb extends GoogleMapsInspectorPlatform {
           Uint8List.fromList(<int>[0]),
           bitmapScaling: MapBitmapScaling.none,
         ),
-        bounds: gmLatLngBoundsTolatLngBounds(groundOverlay.bounds),
+        bounds: gmLatLngBoundsToLatLngBounds(groundOverlay.bounds),
         transparency: 1.0 - groundOverlay.opacity,
         visible: groundOverlay.map != null,
         clickable: clickable != null && (clickable as JSBoolean).toDart);
