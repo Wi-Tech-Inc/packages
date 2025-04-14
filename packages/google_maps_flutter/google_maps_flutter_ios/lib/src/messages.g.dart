@@ -38,7 +38,7 @@ enum PlatformMapType {
 }
 
 enum MarkerCollisionBehavior {
-  required,
+  requiredDisplay,
   optionalAndHidesLowerPriority,
   requiredAndHidesOptional,
 }

@@ -34,7 +34,7 @@ class AdvancedMarker extends Marker {
     super.onDrag,
     super.onDragStart,
     super.onDragEnd,
-    this.collisionBehavior = MarkerCollisionBehavior.required,
+    this.collisionBehavior = MarkerCollisionBehavior.requiredDisplay,
   });
 
   /// Indicates how the marker behaves when it collides with other markers.
@@ -151,7 +151,7 @@ class AdvancedMarker extends Marker {
 /// Indicates how the marker behaves when it collides with other markers.
 enum MarkerCollisionBehavior {
   /// (default) Always display the marker regardless of collision.
-  required,
+  requiredDisplay,
 
   /// Display the marker only if it does not overlap with other markers.
   /// If two markers of this type would overlap, the one with the higher zIndex

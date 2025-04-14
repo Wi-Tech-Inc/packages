@@ -43,7 +43,7 @@ enum PlatformRendererType {
 }
 
 enum PlatformMarkerCollisionBehavior {
-  required,
+  requiredDisplay,
   optionalAndHidesLowerPriority,
   requiredAndHidesOptional,
 }
@@ -528,7 +528,7 @@ class PlatformMarker {
     this.zIndex = 0.0,
     required this.markerId,
     this.clusterManagerId,
-    this.collisionBehavior = PlatformMarkerCollisionBehavior.required,
+    this.collisionBehavior = PlatformMarkerCollisionBehavior.requiredDisplay,
   });
 
   double alpha;

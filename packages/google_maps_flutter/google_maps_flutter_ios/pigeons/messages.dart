@@ -210,7 +210,7 @@ class PlatformMarker {
 }
 
 enum MarkerCollisionBehavior {
-  required,
+  requiredDisplay,
   optionalAndHidesLowerPriority,
   requiredAndHidesOptional,
 }

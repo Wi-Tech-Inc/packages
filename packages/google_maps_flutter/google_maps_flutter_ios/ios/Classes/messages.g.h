@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, FGMPlatformMapType) {
 @end
 
 typedef NS_ENUM(NSUInteger, FGMMarkerCollisionBehavior) {
-  FGMMarkerCollisionBehaviorRequired = 0,
+  FGMMarkerCollisionBehaviorRequiredDisplay = 0,
   FGMMarkerCollisionBehaviorOptionalAndHidesLowerPriority = 1,
   FGMMarkerCollisionBehaviorRequiredAndHidesOptional = 2,
 };

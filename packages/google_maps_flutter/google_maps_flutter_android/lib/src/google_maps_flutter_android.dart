@@ -805,7 +805,7 @@ class GoogleMapsFlutterAndroid extends GoogleMapsFlutterPlatform {
           ? platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
               marker.collisionBehavior,
             )
-          : PlatformMarkerCollisionBehavior.required,
+          : PlatformMarkerCollisionBehavior.requiredDisplay,
     );
   }
 
@@ -1479,8 +1479,8 @@ PlatformMarkerCollisionBehavior
   MarkerCollisionBehavior markerCollisionBehavior,
 ) {
   switch (markerCollisionBehavior) {
-    case MarkerCollisionBehavior.required:
-      return PlatformMarkerCollisionBehavior.required;
+    case MarkerCollisionBehavior.requiredDisplay:
+      return PlatformMarkerCollisionBehavior.requiredDisplay;
     case MarkerCollisionBehavior.optionalAndHidesLowerPriority:
       return PlatformMarkerCollisionBehavior.optionalAndHidesLowerPriority;
     case MarkerCollisionBehavior.requiredAndHidesOptional:

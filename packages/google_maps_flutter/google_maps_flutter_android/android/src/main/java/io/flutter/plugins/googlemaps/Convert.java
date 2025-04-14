@@ -714,7 +714,7 @@ class Convert {
   static int collisionBehaviorFromPigeon(
       Messages.PlatformMarkerCollisionBehavior collisionBehavior) {
     switch (collisionBehavior) {
-      case REQUIRED:
+      case REQUIRED_DISPLAY:
         return AdvancedMarkerOptions.CollisionBehavior.REQUIRED;
       case OPTIONAL_AND_HIDES_LOWER_PRIORITY:
         return AdvancedMarkerOptions.CollisionBehavior.OPTIONAL_AND_HIDES_LOWER_PRIORITY;

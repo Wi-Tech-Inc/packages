@@ -102,7 +102,7 @@ public class Messages {
   }
 
   public enum PlatformMarkerCollisionBehavior {
-    REQUIRED(0),
+    REQUIRED_DISPLAY(0),
     OPTIONAL_AND_HIDES_LOWER_PRIORITY(1),
     REQUIRED_AND_HIDES_OPTIONAL(2);
 

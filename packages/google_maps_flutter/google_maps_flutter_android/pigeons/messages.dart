@@ -184,7 +184,7 @@ class PlatformMarker {
     this.visible = true,
     this.zIndex = 0.0,
     this.clusterManagerId,
-    this.collisionBehavior = PlatformMarkerCollisionBehavior.required,
+    this.collisionBehavior = PlatformMarkerCollisionBehavior.requiredDisplay,
   });
 
   final double alpha;
@@ -206,7 +206,7 @@ class PlatformMarker {
 }
 
 enum PlatformMarkerCollisionBehavior {
-  required,
+  requiredDisplay,
   optionalAndHidesLowerPriority,
   requiredAndHidesOptional,
 }
