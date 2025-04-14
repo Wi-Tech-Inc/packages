@@ -784,7 +784,7 @@ NSObject<FlutterMessageCodec> *FGMGetMessagesCodec(void);
 - (void)clearTileCacheForOverlayWithIdentifier:(NSString *)tileOverlayId error:(FlutterError *_Nullable *_Nonnull)error;
 /// Takes a snapshot of the map and returns its image data.
 - (nullable FlutterStandardTypedData *)takeSnapshotWithError:(FlutterError *_Nullable *_Nonnull)error;
-/// Returns true if the map supports advanced markers
+/// Returns true if the map supports advanced markers.
 ///
 /// @return `nil` only when `error != nil`.
 - (nullable NSNumber *)isAdvancedMarkersAvailable:(FlutterError *_Nullable *_Nonnull)error;

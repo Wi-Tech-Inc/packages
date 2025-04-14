@@ -2449,7 +2449,7 @@ void SetUpFGMMapsApiWithSuffix(id<FlutterBinaryMessenger> binaryMessenger, NSObj
       [channel setMessageHandler:nil];
     }
   }
-  /// Returns true if the map supports advanced markers
+  /// Returns true if the map supports advanced markers.
   {
     FlutterBasicMessageChannel *channel =
       [[FlutterBasicMessageChannel alloc]

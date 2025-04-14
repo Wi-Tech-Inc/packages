@@ -730,7 +730,7 @@ abstract class MapsApi {
   /// Takes a snapshot of the map and returns its image data.
   Uint8List? takeSnapshot();
 
-  /// Returns true if the map supports advanced markers
+  /// Returns true if the map supports advanced markers.
   @ObjCSelector('isAdvancedMarkersAvailable')
   bool isAdvancedMarkersAvailable();
 }
