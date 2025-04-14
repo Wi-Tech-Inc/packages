@@ -304,7 +304,6 @@ class _PlaceMarkerBodyState extends State<_PlaceMarkerBody> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          AdvancedMarkersCapabilityStatus(controller: controller),
           Expanded(
             child: ExampleGoogleMap(
               onMapCreated: _onMapCreated,
