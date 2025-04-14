@@ -87,7 +87,7 @@ public class MarkersControllerTest {
         .setConsumeTapEvents(false)
         .setIcon(icon)
         .setInfoWindow(infoWindow)
-        .setCollisionBehavior(PlatformMarkerCollisionBehavior.REQUIRED);
+        .setCollisionBehavior(PlatformMarkerCollisionBehavior.REQUIRED_DISPLAY);
   }
 
   @Before

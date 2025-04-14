@@ -269,7 +269,7 @@ public class ClusterManagersControllerTest {
         .setClusterManagerId(clusterManagerId)
         .setAnchor(anchor)
         .setInfoWindow(new Messages.PlatformInfoWindow.Builder().setAnchor(anchor).build())
-        .setCollisionBehavior(PlatformMarkerCollisionBehavior.REQUIRED)
+        .setCollisionBehavior(PlatformMarkerCollisionBehavior.REQUIRED_DISPLAY)
         .build();
   }
 }
