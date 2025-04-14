@@ -1882,7 +1882,7 @@ void main() {
     // Hanging in CI, https://github.com/flutter/flutter/issues/166139
     skip: true,
   );
-  
+
   testWidgets('markerWithPinConfig', (WidgetTester tester) async {
     final Set<AdvancedMarker> markers = <AdvancedMarker>{
       AdvancedMarker(
@@ -1895,6 +1895,9 @@ void main() {
       ),
     };
 
+    final Completer<ExampleGoogleMapController> controllerCompleter =
+        Completer<ExampleGoogleMapController>();
+
     await tester.pumpWidget(
       Directionality(
         textDirection: ui.TextDirection.ltr,
@@ -1904,10 +1907,13 @@ void main() {
           ),
           markers: markers,
           markerType: MarkerType.advancedMarker,
+          onMapCreated: (ExampleGoogleMapController controller) =>
+              controllerCompleter.complete(controller),
         ),
       ),
     );
     await tester.pumpAndSettle();
+    await controllerCompleter.future;
   });
 }
 
