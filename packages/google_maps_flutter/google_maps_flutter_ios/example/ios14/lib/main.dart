@@ -7,6 +7,7 @@ import 'package:maps_example_dart/advanced_marker_icons.dart';
 import 'package:maps_example_dart/advanced_markers_clustering.dart';
 import 'package:maps_example_dart/animate_camera.dart';
 import 'package:maps_example_dart/clustering.dart';
+import 'package:maps_example_dart/collision_behavior.dart';
 import 'package:maps_example_dart/ground_overlay.dart';
 import 'package:maps_example_dart/lite_mode.dart';
 import 'package:maps_example_dart/map_click.dart';
@@ -55,5 +56,6 @@ void main() {
     ClusteringPage(),
     AdvancedMarkersClusteringPage(mapId: _mapId),
     MapIdPage(),
+    AdvancedMarkerCollisionBehaviorPage(mapId: _mapId),
   ])));
 }

@@ -920,7 +920,7 @@ gmaps.CollisionBehavior _markerCollisionBehaviorToGmCollisionBehavior(
   MarkerCollisionBehavior markerCollisionBehavior,
 ) {
   return switch (markerCollisionBehavior) {
-    MarkerCollisionBehavior.required => gmaps.CollisionBehavior.REQUIRED,
+    MarkerCollisionBehavior.requiredDisplay => gmaps.CollisionBehavior.REQUIRED,
     MarkerCollisionBehavior.optionalAndHidesLowerPriority =>
       gmaps.CollisionBehavior.OPTIONAL_AND_HIDES_LOWER_PRIORITY,
     MarkerCollisionBehavior.requiredAndHidesOptional =>

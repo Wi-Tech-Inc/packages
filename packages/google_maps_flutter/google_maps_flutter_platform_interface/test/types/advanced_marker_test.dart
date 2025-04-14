@@ -27,7 +27,7 @@ void main() {
       expect(marker.onDrag, equals(null));
       expect(marker.onDragStart, equals(null));
       expect(marker.onDragEnd, equals(null));
-      expect(marker.collisionBehavior, MarkerCollisionBehavior.required);
+      expect(marker.collisionBehavior, MarkerCollisionBehavior.requiredDisplay);
     });
 
     test('constructor alpha is >= 0.0 and <= 1.0', () {
