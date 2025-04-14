@@ -131,7 +131,7 @@ void main() {
       },
     );
 
-   test(
+    test(
         'default implementation of `animateCameraWithConfiguration` delegates to `animateCamera`',
         () {
       final GoogleMapsFlutterPlatform platform =

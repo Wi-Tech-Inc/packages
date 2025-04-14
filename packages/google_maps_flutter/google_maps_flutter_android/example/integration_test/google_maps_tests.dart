@@ -2040,7 +2040,7 @@ void googleMapsTests() {
     // https://github.com/flutter/flutter/issues/131071
     skip: true,
   );
-  
+
   testWidgets('markerWithPinConfig', (WidgetTester tester) async {
     final Set<AdvancedMarker> markers = <AdvancedMarker>{
       AdvancedMarker(
