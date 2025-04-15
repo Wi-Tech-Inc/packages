@@ -127,7 +127,7 @@
   [self setPosition:FGMGetCoordinateForPigeonLatLng(platformMarker.position)];
   [self setRotation:platformMarker.rotation];
   [self setZIndex:platformMarker.zIndex];
-  [self setCollisionBehavior:platformMarker.collisionBehavior]
+  [self setCollisionBehavior:platformMarker.collisionBehavior];
   FGMPlatformInfoWindow *infoWindow = platformMarker.infoWindow;
   [self setInfoWindowAnchor:FGMGetCGPointForPigeonPoint(infoWindow.anchor)];
   if (infoWindow.title) {
