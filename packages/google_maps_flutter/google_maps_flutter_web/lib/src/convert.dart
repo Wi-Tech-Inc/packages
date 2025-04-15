@@ -313,6 +313,18 @@ void _setIconStyle({
   );
 }
 
+void _setIconAnchor({
+  required gmaps.Size size,
+  required Offset anchor,
+  required gmaps.Icon icon,
+}) {
+  final gmaps.Point gmapsAnchor = gmaps.Point(
+    size.width * anchor.dx,
+    size.height * anchor.dy,
+  );
+  icon.anchor = gmapsAnchor;
+}
+
 // Sets the size of the Google Maps icon.
 void _setIconSize({
   required gmaps.Size size,
@@ -547,6 +559,7 @@ Future<gmaps.Icon?> _gmIconFromBitmapDescriptor(
         final gmaps.Size? size = await _getBitmapSize(bitmapDescriptor, url);
         if (size != null) {
           _setIconSize(size: size, icon: icon);
+          _setIconAnchor(size: size, anchor: anchor, icon: icon);
         }
       case MapBitmapScaling.none:
         break;
