@@ -495,10 +495,13 @@ void main() {
     final (GoogleMapsFlutterAndroid maps, MockMapsApi api) =
         setUpMockMap(mapId: mapId);
 
-    const AdvancedMarker object1 = AdvancedMarker(markerId: MarkerId('1'));
-    const AdvancedMarker object2old = AdvancedMarker(markerId: MarkerId('2'));
+    final AdvancedMarker object1 =
+        AdvancedMarker(markerId: const MarkerId('1'));
+    final AdvancedMarker object2old =
+        AdvancedMarker(markerId: const MarkerId('2'));
     final AdvancedMarker object2new = object2old.copyWith(rotationParam: 42);
-    const AdvancedMarker object3 = AdvancedMarker(markerId: MarkerId('3'));
+    final AdvancedMarker object3 =
+        AdvancedMarker(markerId: const MarkerId('3'));
     await maps.updateMarkers(
         MarkerUpdates.from(
           <AdvancedMarker>{object1, object2old},

@@ -9,8 +9,8 @@ void main() {
 
   group('$AdvancedMarker', () {
     test('constructor defaults', () {
-      const AdvancedMarker marker =
-          AdvancedMarker(markerId: MarkerId('ABC123'));
+      final AdvancedMarker marker =
+          AdvancedMarker(markerId: const MarkerId('ABC123'));
 
       expect(marker.alpha, equals(1.0));
       expect(marker.anchor, equals(const Offset(0.5, 1.0)));
@@ -94,7 +94,7 @@ void main() {
     });
 
     test('clone', () {
-      const Marker marker = AdvancedMarker(markerId: MarkerId('ABC123'));
+      final Marker marker = AdvancedMarker(markerId: const MarkerId('ABC123'));
       final Marker clone = marker.clone();
 
       expect(clone, isA<AdvancedMarker>());
@@ -104,7 +104,7 @@ void main() {
 
     test('copyWith', () {
       const MarkerId markerId = MarkerId('ABC123');
-      const AdvancedMarker marker = AdvancedMarker(markerId: markerId);
+      final AdvancedMarker marker = AdvancedMarker(markerId: markerId);
 
       final BitmapDescriptor testDescriptor =
           BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan);

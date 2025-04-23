@@ -16,7 +16,7 @@ class AdvancedMarker extends Marker {
   ///
   /// Specifies a marker with a given [collisionBehavior]. Default is
   /// [MarkerCollisionBehavior.required].
-  const AdvancedMarker({
+  AdvancedMarker({
     required super.markerId,
     super.alpha,
     super.anchor,
@@ -28,14 +28,14 @@ class AdvancedMarker extends Marker {
     super.position,
     super.rotation,
     super.visible,
-    super.zIndex,
     super.clusterManagerId,
     super.onTap,
     super.onDrag,
     super.onDragStart,
     super.onDragEnd,
+    int zIndex = 0,
     this.collisionBehavior = MarkerCollisionBehavior.requiredDisplay,
-  });
+  }) : super(zIndex: zIndex.toDouble());
 
   /// Indicates how the marker behaves when it collides with other markers.
   final MarkerCollisionBehavior collisionBehavior;
@@ -75,7 +75,7 @@ class AdvancedMarker extends Marker {
       position: positionParam ?? position,
       rotation: rotationParam ?? rotation,
       visible: visibleParam ?? visible,
-      zIndex: zIndexParam ?? zIndex,
+      zIndex: (zIndexParam ?? zIndex).toInt(),
       onTap: onTapParam ?? onTap,
       onDragStart: onDragStartParam ?? onDragStart,
       onDrag: onDragParam ?? onDrag,

@@ -49,8 +49,8 @@ void main() {
 
     testWidgets('addMarkers', (WidgetTester tester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(markerId: MarkerId('1')),
-        const AdvancedMarker(markerId: MarkerId('2')),
+        AdvancedMarker(markerId: const MarkerId('1')),
+        AdvancedMarker(markerId: const MarkerId('2')),
       };
 
       await controller.addMarkers(markers);
@@ -66,7 +66,7 @@ void main() {
       gmaps.LatLngLiteral? position;
 
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(markerId: MarkerId('1')),
+        AdvancedMarker(markerId: const MarkerId('1')),
       };
       await controller.addMarkers(markers);
 
@@ -82,10 +82,10 @@ void main() {
 
       // Update the marker with draggable and position.
       final Set<AdvancedMarker> updatedMarkers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
           draggable: true,
-          position: LatLng(42, 54),
+          position: const LatLng(42, 54),
         ),
       };
       await controller.changeMarkers(updatedMarkers);
@@ -108,9 +108,9 @@ void main() {
       gmaps.LatLngLiteral? position;
 
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
-          position: LatLng(42, 54),
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
+          position: const LatLng(42, 54),
         ),
       };
       await controller.addMarkers(markers);
@@ -126,8 +126,8 @@ void main() {
 
       // Update the marker without position.
       final Set<AdvancedMarker> updatedMarkers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
           draggable: true,
         ),
       };
@@ -146,9 +146,9 @@ void main() {
 
     testWidgets('removeMarkers', (WidgetTester tester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(markerId: MarkerId('1')),
-        const AdvancedMarker(markerId: MarkerId('2')),
-        const AdvancedMarker(markerId: MarkerId('3')),
+        AdvancedMarker(markerId: const MarkerId('1')),
+        AdvancedMarker(markerId: const MarkerId('2')),
+        AdvancedMarker(markerId: const MarkerId('3')),
       };
 
       await controller.addMarkers(markers);
@@ -171,9 +171,9 @@ void main() {
 
     testWidgets('InfoWindow show/hide', (WidgetTester tester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
-          infoWindow: InfoWindow(title: 'Title', snippet: 'Snippet'),
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
+          infoWindow: const InfoWindow(title: 'Title', snippet: 'Snippet'),
         ),
       };
 
@@ -193,13 +193,13 @@ void main() {
     testWidgets('only single InfoWindow is visible',
         (WidgetTester tester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
-          infoWindow: InfoWindow(title: 'Title', snippet: 'Snippet'),
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
+          infoWindow: const InfoWindow(title: 'Title', snippet: 'Snippet'),
         ),
-        const AdvancedMarker(
-          markerId: MarkerId('2'),
-          infoWindow: InfoWindow(title: 'Title', snippet: 'Snippet'),
+        AdvancedMarker(
+          markerId: const MarkerId('2'),
+          infoWindow: const InfoWindow(title: 'Title', snippet: 'Snippet'),
         ),
       };
       await controller.addMarkers(markers);
@@ -566,9 +566,9 @@ void main() {
     testWidgets('InfoWindow snippet can have links',
         (WidgetTester tester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
-          infoWindow: InfoWindow(
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
+          infoWindow: const InfoWindow(
             title: 'title for test',
             snippet: '<a href="https://www.google.com">Go to Google >>></a>',
           ),
@@ -593,9 +593,9 @@ void main() {
 
     testWidgets('InfoWindow content is clickable', (WidgetTester tester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
-        const AdvancedMarker(
-          markerId: MarkerId('1'),
-          infoWindow: InfoWindow(
+        AdvancedMarker(
+          markerId: const MarkerId('1'),
+          infoWindow: const InfoWindow(
             title: 'title for test',
             snippet: 'some snippet',
           ),

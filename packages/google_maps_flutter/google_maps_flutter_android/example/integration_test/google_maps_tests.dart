@@ -2240,7 +2240,7 @@ AdvancedMarker _copyAdvancedMarkerWithClusterManagerId(
     position: marker.position,
     rotation: marker.rotation,
     visible: marker.visible,
-    zIndex: marker.zIndex,
+    zIndex: marker.zIndex.toInt(),
     onTap: marker.onTap,
     onDragStart: marker.onDragStart,
     onDrag: marker.onDrag,
