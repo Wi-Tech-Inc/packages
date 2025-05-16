@@ -515,7 +515,7 @@ void main() {
       );
     });
 
-    testWidgets('markers created with text glyph work',
+    testWidgets('markers created with bitmap glyph work',
         (WidgetTester widgetTester) async {
       final Set<AdvancedMarker> markers = <AdvancedMarker>{
         AdvancedMarker(
