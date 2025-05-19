@@ -121,7 +121,7 @@ class MarkerBuilder implements MarkerOptionsSink, ClusterItem {
   }
 
   @Override
-  public void setCollisionBehavior(int collisionBehavior) {
+  public void setCollisionBehavior(@AdvancedMarkerOptions.CollisionBehavior int collisionBehavior) {
     if (markerOptions.getClass() == AdvancedMarkerOptions.class) {
       ((AdvancedMarkerOptions) markerOptions).collisionBehavior(collisionBehavior);
     }
