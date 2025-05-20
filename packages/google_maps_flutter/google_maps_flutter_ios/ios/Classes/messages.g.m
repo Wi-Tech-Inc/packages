@@ -50,8 +50,8 @@ static id GetNullableObjectAtIndex(NSArray<id> *array, NSInteger key) {
 }
 @end
 
-@implementation FGMMarkerCollisionBehaviorBox
-- (instancetype)initWithValue:(FGMMarkerCollisionBehavior)value {
+@implementation FGMPlatformMarkerCollisionBehaviorBox
+- (instancetype)initWithValue:(FGMPlatformMarkerCollisionBehavior)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -754,7 +754,7 @@ static id GetNullableObjectAtIndex(NSArray<id> *array, NSInteger key) {
                        zIndex:(double)zIndex
                      markerId:(NSString *)markerId
              clusterManagerId:(nullable NSString *)clusterManagerId
-            collisionBehavior:(nullable FGMMarkerCollisionBehaviorBox *)collisionBehavior {
+            collisionBehavior:(nullable FGMPlatformMarkerCollisionBehaviorBox *)collisionBehavior {
   FGMPlatformMarker *pigeonResult = [[FGMPlatformMarker alloc] init];
   pigeonResult.alpha = alpha;
   pigeonResult.anchor = anchor;
@@ -1693,7 +1693,7 @@ static id GetNullableObjectAtIndex(NSArray<id> *array, NSInteger key) {
     case 130: {
       NSNumber *enumAsNumber = [self readValue];
       return enumAsNumber == nil ? nil
-                                 : [[FGMMarkerCollisionBehaviorBox alloc]
+                                 : [[FGMPlatformMarkerCollisionBehaviorBox alloc]
                                        initWithValue:[enumAsNumber integerValue]];
     }
     case 131: {
@@ -1814,8 +1814,8 @@ static id GetNullableObjectAtIndex(NSArray<id> *array, NSInteger key) {
     FGMPlatformMapTypeBox *box = (FGMPlatformMapTypeBox *)value;
     [self writeByte:129];
     [self writeValue:(value == nil ? [NSNull null] : [NSNumber numberWithInteger:box.value])];
-  } else if ([value isKindOfClass:[FGMMarkerCollisionBehaviorBox class]]) {
-    FGMMarkerCollisionBehaviorBox *box = (FGMMarkerCollisionBehaviorBox *)value;
+  } else if ([value isKindOfClass:[FGMPlatformMarkerCollisionBehaviorBox class]]) {
+    FGMPlatformMarkerCollisionBehaviorBox *box = (FGMPlatformMarkerCollisionBehaviorBox *)value;
     [self writeByte:130];
     [self writeValue:(value == nil ? [NSNull null] : [NSNumber numberWithInteger:box.value])];
   } else if ([value isKindOfClass:[FGMPlatformJointTypeBox class]]) {

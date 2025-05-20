@@ -206,10 +206,10 @@ class PlatformMarker {
   final double zIndex;
   final String markerId;
   final String? clusterManagerId;
-  final MarkerCollisionBehavior? collisionBehavior;
+  final PlatformMarkerCollisionBehavior? collisionBehavior;
 }
 
-enum MarkerCollisionBehavior {
+enum PlatformMarkerCollisionBehavior {
   requiredDisplay,
   optionalAndHidesLowerPriority,
   requiredAndHidesOptional,

@@ -108,7 +108,7 @@
   self.marker.zIndex = zIndex;
 }
 
-- (void)setCollisionBehavior:(FGMMarkerCollisionBehaviorBox *)collisionBehavior {
+- (void)setCollisionBehavior:(FGMPlatformMarkerCollisionBehaviorBox *)collisionBehavior {
   if ([self.marker isKindOfClass:[GMSAdvancedMarker class]]) {
     GMSCollisionBehavior collitionBehaviorValue = (GMSCollisionBehavior)collisionBehavior.value;
     [(GMSAdvancedMarker *)self.marker setCollisionBehavior:(collitionBehaviorValue)];

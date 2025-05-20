@@ -28,16 +28,16 @@ typedef NS_ENUM(NSUInteger, FGMPlatformMapType) {
 - (instancetype)initWithValue:(FGMPlatformMapType)value;
 @end
 
-typedef NS_ENUM(NSUInteger, FGMMarkerCollisionBehavior) {
-  FGMMarkerCollisionBehaviorRequiredDisplay = 0,
-  FGMMarkerCollisionBehaviorOptionalAndHidesLowerPriority = 1,
-  FGMMarkerCollisionBehaviorRequiredAndHidesOptional = 2,
+typedef NS_ENUM(NSUInteger, FGMPlatformMarkerCollisionBehavior) {
+  FGMPlatformMarkerCollisionBehaviorRequiredDisplay = 0,
+  FGMPlatformMarkerCollisionBehaviorOptionalAndHidesLowerPriority = 1,
+  FGMPlatformMarkerCollisionBehaviorRequiredAndHidesOptional = 2,
 };
 
-/// Wrapper for FGMMarkerCollisionBehavior to allow for nullability.
-@interface FGMMarkerCollisionBehaviorBox : NSObject
-@property(nonatomic, assign) FGMMarkerCollisionBehavior value;
-- (instancetype)initWithValue:(FGMMarkerCollisionBehavior)value;
+/// Wrapper for FGMPlatformMarkerCollisionBehavior to allow for nullability.
+@interface FGMPlatformMarkerCollisionBehaviorBox : NSObject
+@property(nonatomic, assign) FGMPlatformMarkerCollisionBehavior value;
+- (instancetype)initWithValue:(FGMPlatformMarkerCollisionBehavior)value;
 @end
 
 /// Join types for polyline joints.
@@ -310,7 +310,7 @@ typedef NS_ENUM(NSUInteger, FGMPlatformMapBitmapScaling) {
                        zIndex:(double)zIndex
                      markerId:(NSString *)markerId
              clusterManagerId:(nullable NSString *)clusterManagerId
-            collisionBehavior:(nullable FGMMarkerCollisionBehaviorBox *)collisionBehavior;
+            collisionBehavior:(nullable FGMPlatformMarkerCollisionBehaviorBox *)collisionBehavior;
 @property(nonatomic, assign) double alpha;
 @property(nonatomic, strong) FGMPlatformPoint *anchor;
 @property(nonatomic, assign) BOOL consumeTapEvents;
@@ -324,7 +324,7 @@ typedef NS_ENUM(NSUInteger, FGMPlatformMapBitmapScaling) {
 @property(nonatomic, assign) double zIndex;
 @property(nonatomic, copy) NSString *markerId;
 @property(nonatomic, copy, nullable) NSString *clusterManagerId;
-@property(nonatomic, strong, nullable) FGMMarkerCollisionBehaviorBox *collisionBehavior;
+@property(nonatomic, strong, nullable) FGMPlatformMarkerCollisionBehaviorBox *collisionBehavior;
 @end
 
 /// Pigeon equivalent of the Polygon class.

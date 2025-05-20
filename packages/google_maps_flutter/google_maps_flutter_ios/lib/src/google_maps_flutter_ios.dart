@@ -687,6 +687,10 @@ class GoogleMapsFlutterIOS extends GoogleMapsFlutterPlatform {
       zIndex: marker.zIndex,
       markerId: marker.markerId.value,
       clusterManagerId: marker.clusterManagerId?.value,
+      collisionBehavior: marker is AdvancedMarker
+          ? platformMarkerCollisionBehaviorFromCollisionBehavior(
+              marker.collisionBehavior)
+          : null,
     );
   }
 
@@ -840,6 +844,23 @@ class GoogleMapsFlutterIOS extends GoogleMapsFlutterPlatform {
     // switch as needing an update.
     // ignore: dead_code
     return PlatformMapBitmapScaling.auto;
+  }
+
+  /// Converts [MarkersCollisionBehavior] from platform interface to
+  /// [PlatformMarkerCollisionBehavior] Pigeon.
+  @visibleForTesting
+  static PlatformMarkerCollisionBehavior
+      platformMarkerCollisionBehaviorFromCollisionBehavior(
+    MarkerCollisionBehavior collisionBehavior,
+  ) {
+    return switch (collisionBehavior) {
+      MarkerCollisionBehavior.requiredDisplay =>
+        PlatformMarkerCollisionBehavior.requiredDisplay,
+      MarkerCollisionBehavior.optionalAndHidesLowerPriority =>
+        PlatformMarkerCollisionBehavior.optionalAndHidesLowerPriority,
+      MarkerCollisionBehavior.requiredAndHidesOptional =>
+        PlatformMarkerCollisionBehavior.requiredAndHidesOptional,
+    };
   }
 
   /// Converts [BitmapDescriptor] from platform interface to [PlatformBitmap] pigeon.

@@ -38,7 +38,7 @@ enum PlatformMapType {
   hybrid,
 }
 
-enum MarkerCollisionBehavior {
+enum PlatformMarkerCollisionBehavior {
   requiredDisplay,
   optionalAndHidesLowerPriority,
   requiredAndHidesOptional,
@@ -551,7 +551,7 @@ class PlatformMarker {
 
   String? clusterManagerId;
 
-  MarkerCollisionBehavior? collisionBehavior;
+  PlatformMarkerCollisionBehavior? collisionBehavior;
 
   Object encode() {
     return <Object?>[
@@ -588,7 +588,7 @@ class PlatformMarker {
       zIndex: result[10]! as double,
       markerId: result[11]! as String,
       clusterManagerId: result[12] as String?,
-      collisionBehavior: result[13] as MarkerCollisionBehavior?,
+      collisionBehavior: result[13] as PlatformMarkerCollisionBehavior?,
     );
   }
 }
@@ -1598,7 +1598,7 @@ class _PigeonCodec extends StandardMessageCodec {
     } else if (value is PlatformMapType) {
       buffer.putUint8(129);
       writeValue(buffer, value.index);
-    } else if (value is MarkerCollisionBehavior) {
+    } else if (value is PlatformMarkerCollisionBehavior) {
       buffer.putUint8(130);
       writeValue(buffer, value.index);
     } else if (value is PlatformJointType) {
@@ -1746,7 +1746,9 @@ class _PigeonCodec extends StandardMessageCodec {
         return value == null ? null : PlatformMapType.values[value];
       case 130:
         final int? value = readValue(buffer) as int?;
-        return value == null ? null : MarkerCollisionBehavior.values[value];
+        return value == null
+            ? null
+            : PlatformMarkerCollisionBehavior.values[value];
       case 131:
         final int? value = readValue(buffer) as int?;
         return value == null ? null : PlatformJointType.values[value];
