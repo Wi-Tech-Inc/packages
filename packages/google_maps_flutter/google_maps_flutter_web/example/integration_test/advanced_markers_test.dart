@@ -507,7 +507,8 @@ void main() {
       }
 
       expect(paragraphElement, isNotNull);
-      expect(paragraphElement!.innerHTML, 'Hey');
+      expect(paragraphElement!.innerHTML.toString(), 'Hey');
+
       expect(
         paragraphElement.getAttribute('style')?.toLowerCase(),
         contains('color: #0000ff'),
