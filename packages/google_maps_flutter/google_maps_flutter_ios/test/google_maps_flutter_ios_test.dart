@@ -543,7 +543,7 @@ void main() {
       expect(
         firstChanged.collisionBehavior,
         GoogleMapsFlutterIOS
-            .platformMarkerCollisionBehaviorFromCollisionBehavior(
+            .platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
                 object2new.collisionBehavior),
       );
     }
@@ -576,7 +576,7 @@ void main() {
       expect(
           firstAdded.collisionBehavior,
           GoogleMapsFlutterIOS
-              .platformMarkerCollisionBehaviorFromCollisionBehavior(
+              .platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
                   object3.collisionBehavior));
     }
   });

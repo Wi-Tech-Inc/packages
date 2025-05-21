@@ -688,7 +688,7 @@ class GoogleMapsFlutterIOS extends GoogleMapsFlutterPlatform {
       markerId: marker.markerId.value,
       clusterManagerId: marker.clusterManagerId?.value,
       collisionBehavior: marker is AdvancedMarker
-          ? platformMarkerCollisionBehaviorFromCollisionBehavior(
+          ? platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
               marker.collisionBehavior)
           : null,
     );
@@ -850,7 +850,7 @@ class GoogleMapsFlutterIOS extends GoogleMapsFlutterPlatform {
   /// [PlatformMarkerCollisionBehavior] Pigeon.
   @visibleForTesting
   static PlatformMarkerCollisionBehavior
-      platformMarkerCollisionBehaviorFromCollisionBehavior(
+      platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
     MarkerCollisionBehavior collisionBehavior,
   ) {
     return switch (collisionBehavior) {

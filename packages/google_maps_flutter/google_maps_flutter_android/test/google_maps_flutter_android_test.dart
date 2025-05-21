@@ -499,30 +499,32 @@ void main() {
         AdvancedMarker(markerId: const MarkerId('1'));
     final AdvancedMarker object2old =
         AdvancedMarker(markerId: const MarkerId('2'));
-    final AdvancedMarker object2new = object2old.copyWith(rotationParam: 42);
-    final AdvancedMarker object3 =
-        AdvancedMarker(markerId: const MarkerId('3'));
+    final AdvancedMarker object2new = object2old.copyWith(
+        rotationParam: 42,
+        collisionBehaviorParam:
+            MarkerCollisionBehavior.optionalAndHidesLowerPriority);
+    final AdvancedMarker object3 = AdvancedMarker(
+        markerId: const MarkerId('3'),
+        collisionBehavior: MarkerCollisionBehavior.requiredAndHidesOptional);
     await maps.updateMarkers(
-        MarkerUpdates.from(
-          <AdvancedMarker>{object1, object2old},
-          <AdvancedMarker>{object2new, object3},
-        ),
+        MarkerUpdates.from(<AdvancedMarker>{object1, object2old},
+            <AdvancedMarker>{object2new, object3}),
         mapId: mapId);
 
     final VerificationResult verification =
         verify(api.updateMarkers(captureAny, captureAny, captureAny));
-    final List<PlatformMarker?> toAdd =
-        verification.captured[0] as List<PlatformMarker?>;
-    final List<PlatformMarker?> toChange =
-        verification.captured[1] as List<PlatformMarker?>;
-    final List<String?> toRemove = verification.captured[2] as List<String?>;
+    final List<PlatformMarker> toAdd =
+        verification.captured[0] as List<PlatformMarker>;
+    final List<PlatformMarker> toChange =
+        verification.captured[1] as List<PlatformMarker>;
+    final List<String> toRemove = verification.captured[2] as List<String>;
     // Object one should be removed.
     expect(toRemove.length, 1);
     expect(toRemove.first, object1.markerId.value);
     // Object two should be changed.
     {
       expect(toChange.length, 1);
-      final PlatformMarker firstChanged = toChange.first!;
+      final PlatformMarker firstChanged = toChange.first;
       expect(firstChanged.alpha, object2new.alpha);
       expect(firstChanged.anchor.x, object2new.anchor.dx);
       expect(firstChanged.anchor.y, object2new.anchor.dy);
@@ -546,11 +548,16 @@ void main() {
       expect(firstChanged.zIndex, object2new.zIndex);
       expect(firstChanged.markerId, object2new.markerId.value);
       expect(firstChanged.clusterManagerId, object2new.clusterManagerId?.value);
+      expect(
+        firstChanged.collisionBehavior,
+        platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
+            object2new.collisionBehavior),
+      );
     }
     // Object 3 should be added.
     {
       expect(toAdd.length, 1);
-      final PlatformMarker firstAdded = toAdd.first!;
+      final PlatformMarker firstAdded = toAdd.first;
       expect(firstAdded.alpha, object3.alpha);
       expect(firstAdded.anchor.x, object3.anchor.dx);
       expect(firstAdded.anchor.y, object3.anchor.dy);
@@ -574,6 +581,10 @@ void main() {
       expect(firstAdded.zIndex, object3.zIndex);
       expect(firstAdded.markerId, object3.markerId.value);
       expect(firstAdded.clusterManagerId, object3.clusterManagerId?.value);
+      expect(
+          firstAdded.collisionBehavior,
+          platformMarkerCollisionBehaviorFromMarkerCollisionBehavior(
+              object3.collisionBehavior));
     }
   });
 

@@ -145,7 +145,8 @@ class MarkerController implements MarkerOptionsSink {
   }
 
   @Override
-  public void setCollisionBehavior(@AdvancedMarkerOptions.CollisionBehavior int collisionBehavior) {}
+  public void setCollisionBehavior(
+      @AdvancedMarkerOptions.CollisionBehavior int collisionBehavior) {}
 
   String getGoogleMapsMarkerId() {
     return googleMapsMarkerId;
