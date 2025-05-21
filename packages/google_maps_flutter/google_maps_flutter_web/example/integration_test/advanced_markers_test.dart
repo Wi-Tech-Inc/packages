@@ -559,7 +559,10 @@ void main() {
       expect(imgElement!.src, endsWith('assets/red_square.png'));
       expect(
         imgElement.getAttribute('style')?.toLowerCase(),
-        contains('width: 12px; height: 12px;'),
+        // Style must contain width and height in pixels. Regex is used to
+        // ignore the decimal part of the pixel size which is present when
+        // compiled to WebAssembly.
+        matches(RegExp(r'width: 12(\.0){0,1}px; height: 12(\.0){0,1}px;')),
       );
     });
 
