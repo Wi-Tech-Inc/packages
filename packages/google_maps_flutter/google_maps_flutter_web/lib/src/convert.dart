@@ -304,8 +304,8 @@ void _setIconStyle({
     'style',
     <String>[
       if (size != null) ...<String>[
-        'width: ${size.width}px;',
-        'height: ${size.height}px;',
+        'width: ${size.width.toStringAsFixed(1)}px;',
+        'height: ${size.height.toStringAsFixed(1)}px;',
       ],
       if (opacity != null) 'opacity: $opacity;',
       if (isVisible != null) 'visibility: ${isVisible ? 'visible' : 'hidden'};',
