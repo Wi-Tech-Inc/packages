@@ -466,10 +466,10 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
     String transform = '';
     if (anchor != null) {
       // Add percentage-based anchor to the transform. The default anchor is
-      // (0.5, 1.0), so x will range from -50% to 50%, and y will range from 0
-      // to 100%.
-      final double anchorX = (anchor.dx - 0.5) * 100;
-      final double anchorY = anchor.dy * 100;
+      // (0.5, 1.0), so x will range from 50% at 0.0 to -50% at 1.0, and y will
+      // range from 100% at 0.0 to 0% at 1.0.
+      final double anchorX = (0.5 - anchor.dx) * 100;
+      final double anchorY = (1 - anchor.dy) * 100;
       transform += ' translate(${anchorX.toStringAsFixed(1)}%, '
           '${anchorY.toStringAsFixed(1)}%)';
     }
