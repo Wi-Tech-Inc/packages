@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'dart:ui' show Offset;
+
 import 'package:flutter/foundation.dart';
 
 import '../../google_maps_flutter_platform_interface.dart';
@@ -33,9 +34,10 @@ class AdvancedMarker extends Marker {
     super.onDrag,
     super.onDragStart,
     super.onDragEnd,
-    int zIndex = 0,
+    super.zIndex,
+    super.zIndexInt,
     this.collisionBehavior = MarkerCollisionBehavior.requiredDisplay,
-  }) : super(zIndex: zIndex.toDouble());
+  });
 
   /// Indicates how the marker behaves when it collides with other markers.
   final MarkerCollisionBehavior collisionBehavior;
@@ -55,6 +57,7 @@ class AdvancedMarker extends Marker {
     double? rotationParam,
     bool? visibleParam,
     double? zIndexParam,
+    int? zIndexIntParam,
     VoidCallback? onTapParam,
     ValueChanged<LatLng>? onDragStartParam,
     ValueChanged<LatLng>? onDragParam,
@@ -63,6 +66,8 @@ class AdvancedMarker extends Marker {
     MarkerCollisionBehavior? collisionBehaviorParam,
     double? altitudeParam,
   }) {
+    assert(zIndexParam == null || zIndexIntParam == null,
+        'Only one of zIndexParam and zIndexIntParam can be provided');
     return AdvancedMarker(
       markerId: markerId,
       alpha: alphaParam ?? alpha,
@@ -75,7 +80,7 @@ class AdvancedMarker extends Marker {
       position: positionParam ?? position,
       rotation: rotationParam ?? rotation,
       visible: visibleParam ?? visible,
-      zIndex: (zIndexParam ?? zIndex).toInt(),
+      zIndex: zIndexIntParam?.toDouble() ?? zIndexParam ?? zIndex,
       onTap: onTapParam ?? onTap,
       onDragStart: onDragStartParam ?? onDragStart,
       onDrag: onDragParam ?? onDrag,

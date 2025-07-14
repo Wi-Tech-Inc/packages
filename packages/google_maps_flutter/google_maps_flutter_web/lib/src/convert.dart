@@ -420,6 +420,7 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
   required double? opacity,
   required bool isVisible,
   required double? rotation,
+  required Offset? anchor,
 }) async {
   if (bitmapDescriptor is PinConfig) {
     final gmaps.PinElementOptions options = gmaps.PinElementOptions()
@@ -452,6 +453,7 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
           // Always visible, as the visibility is handled by the parent marker.
           isVisible: true,
           rotation: rotation,
+          anchor: anchor,
         );
         options.glyph = glyphBitmap;
       case null:
@@ -460,10 +462,25 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
 
     final gmaps.PinElement pinElement = gmaps.PinElement(options);
     final HTMLElement htmlElement = pinElement.element;
+
+    String transform = '';
+    if (rotation != null) {
+      transform += ' rotate(${rotation}deg)';
+    }
+    if (anchor != null) {
+      // Add percentage-based anchor to the transform. The default anchor is
+      // (0.5, 1.0), so x will range from -50% to 50%, and y will range from 0
+      // to 100%.
+      final double anchorX = (anchor.dx - 0.5) * 100;
+      final double anchorY = anchor.dy * 100;
+      transform += ' translate(${anchorX.toStringAsFixed(1)}%, '
+          '${anchorY.toStringAsFixed(1)}%)';
+    }
+
     htmlElement.style
       ..visibility = isVisible ? 'visible' : 'hidden'
       ..opacity = opacity?.toString() ?? '1.0'
-      ..transform = rotation != null ? 'rotate(${rotation}deg)' : '';
+      ..transform = transform;
     return htmlElement;
   }
 
@@ -633,6 +650,7 @@ Future<O> _markerOptionsFromMarker<T, O>(
             opacity: marker.alpha,
             isVisible: marker.visible,
             rotation: marker.rotation,
+            anchor: marker.anchor,
           )
           ..position = gmaps.LatLng(
             marker.position.latitude,
