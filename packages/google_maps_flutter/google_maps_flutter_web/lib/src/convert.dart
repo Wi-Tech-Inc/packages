@@ -464,9 +464,6 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
     final HTMLElement htmlElement = pinElement.element;
 
     String transform = '';
-    if (rotation != null) {
-      transform += ' rotate(${rotation}deg)';
-    }
     if (anchor != null) {
       // Add percentage-based anchor to the transform. The default anchor is
       // (0.5, 1.0), so x will range from -50% to 50%, and y will range from 0
@@ -475,6 +472,9 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
       final double anchorY = anchor.dy * 100;
       transform += ' translate(${anchorX.toStringAsFixed(1)}%, '
           '${anchorY.toStringAsFixed(1)}%)';
+    }
+    if (rotation != null) {
+      transform += ' rotate(${rotation}deg)';
     }
 
     htmlElement.style
