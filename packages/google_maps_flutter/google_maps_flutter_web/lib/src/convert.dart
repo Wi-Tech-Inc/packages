@@ -452,9 +452,17 @@ Future<Node?> _advancedMarkerIconFromBitmapDescriptor(
           opacity: 1.0,
           // Always visible, as the visibility is handled by the parent marker.
           isVisible: true,
-          rotation: rotation,
-          anchor: anchor,
+          // Applied by parent
+          rotation: null,
+          anchor: null,
         );
+        if (glyphBitmap is HTMLElement &&
+            bitmapDescriptor.backgroundColor == Colors.transparent &&
+            bitmapDescriptor.borderColor == Colors.transparent) {
+          // Glyph only: position the bitmap in the center of the pin so
+          // rotation and anchor are applied correctly
+          glyphBitmap.style.transform = 'translateY(5px)';
+        }
         options.glyph = glyphBitmap;
       case null:
         break;
