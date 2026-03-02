@@ -35,13 +35,14 @@ class MapConfiguration {
     this.indoorViewEnabled,
     this.trafficEnabled,
     this.buildingsEnabled,
-    this.isDarkMode,
+    bool? isDarkMode,
     String? mapId,
     @Deprecated('cloudMapId is deprecated. Use mapId instead.')
     String? cloudMapId,
     this.style,
     this.markerType,
-  }) : mapId = mapId ?? cloudMapId;
+  })  : _isDarkMode = isDarkMode,
+        mapId = mapId ?? cloudMapId;
 
   /// This setting controls how the API handles gestures on the map. Web only.
   ///
@@ -130,8 +131,11 @@ class MapConfiguration {
   /// used.
   final MarkerType? markerType;
 
+  /// Internal nullable value to preserve "no change" semantics in updates.
+  final bool? _isDarkMode;
+
   /// Indicates whether the map should use dark mode or light mode.
-  final bool? isDarkMode;
+  bool get isDarkMode => _isDarkMode ?? true;
 
   /// Identifier that's associated with a specific cloud-based map style.
   ///
@@ -203,7 +207,7 @@ class MapConfiguration {
       buildingsEnabled:
           buildingsEnabled != other.buildingsEnabled ? buildingsEnabled : null,
       mapId: mapId != other.mapId ? mapId : null,
-      isDarkMode: isDarkMode != other.isDarkMode ? isDarkMode : null,
+      isDarkMode: _isDarkMode != other._isDarkMode ? _isDarkMode : null,
       style: style != other.style ? style : null,
       markerType: markerType != other.markerType ? markerType : null,
     );
@@ -239,7 +243,7 @@ class MapConfiguration {
       buildingsEnabled: diff.buildingsEnabled ?? buildingsEnabled,
       mapId: diff.mapId ?? mapId,
       style: diff.style ?? style,
-      isDarkMode: diff.isDarkMode ?? isDarkMode,
+      isDarkMode: diff._isDarkMode ?? _isDarkMode,
       markerType: diff.markerType ?? markerType,
     );
   }
@@ -267,7 +271,7 @@ class MapConfiguration {
       trafficEnabled == null &&
       buildingsEnabled == null &&
       mapId == null &&
-      isDarkMode == null &&
+      _isDarkMode == null &&
       style == null &&
       markerType == null;
 
@@ -302,7 +306,7 @@ class MapConfiguration {
         buildingsEnabled == other.buildingsEnabled &&
         mapId == other.mapId &&
         style == other.style &&
-        isDarkMode == other.isDarkMode &&
+        _isDarkMode == other._isDarkMode &&
         markerType == other.markerType;
   }
 
@@ -329,7 +333,7 @@ class MapConfiguration {
         trafficEnabled,
         buildingsEnabled,
         mapId,
-        isDarkMode,
+        _isDarkMode,
         style,
         markerType,
       ]);
