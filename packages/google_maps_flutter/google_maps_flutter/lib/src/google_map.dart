@@ -101,6 +101,7 @@ class GoogleMap extends StatefulWidget {
   const GoogleMap({
     super.key,
     required this.initialCameraPosition,
+    this.isDarkMode = true,
     this.style,
     this.onMapCreated,
     this.gestureRecognizers = const <Factory<OneSequenceGestureRecognizer>>{},
@@ -154,6 +155,9 @@ class GoogleMap extends StatefulWidget {
 
   /// The initial position of the map's camera.
   final CameraPosition initialCameraPosition;
+
+  /// Whether to force dark mode for map color scheme (web implementation).
+  final bool isDarkMode;
 
   /// The style for the map.
   ///
@@ -715,5 +719,6 @@ MapConfiguration _configurationFromMapWidget(GoogleMap map) {
     // A null style in the widget means no style, which is expressed as '' in
     // the configuration to distinguish from no change (null).
     style: map.style ?? '',
+    isDarkMode: map.isDarkMode,
   );
 }
