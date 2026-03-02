@@ -23,6 +23,7 @@ class GoogleMapController {
     MapObjects mapObjects = const MapObjects(),
     MapConfiguration mapConfiguration = const MapConfiguration(),
   })  : _mapId = mapId,
+        _mapTheme = gmaps.ColorScheme.DARK,
         _streamController = streamController,
         _initialCameraPosition = widgetConfiguration.initialCameraPosition,
         _markers = mapObjects.markers,
@@ -108,6 +109,7 @@ class GoogleMapController {
   // The internal ID of the map. Used to broadcast events, DOM IDs and everything where a unique ID is needed.
   final int _mapId;
 
+  final gmaps.ColorScheme _mapTheme;
   final CameraPosition _initialCameraPosition;
   final Set<Marker> _markers;
   final Set<Polygon> _polygons;
@@ -225,12 +227,14 @@ class GoogleMapController {
   DebugCreateMapFunction? _overrideCreateMap;
   DebugSetOptionsFunction? _overrideSetOptions;
 
-  gmaps.Map _createMap(HTMLElement div, gmaps.MapOptions options) {
+  gmaps.Map _createMap(
+      HTMLElement div, gmaps.MapOptions options, gmaps.ColorScheme theme) {
     if (_overrideCreateMap != null) {
       return _overrideCreateMap!(div, options);
     }
 
-    options.colorScheme = gmaps.ColorScheme.DARK;
+    options.colorScheme = theme;
+
     return gmaps.Map(div, options);
   }
 
@@ -262,6 +266,7 @@ class GoogleMapController {
   void init() {
     gmaps.MapOptions options = _configurationAndStyleToGmapsOptions(
         _lastMapConfiguration, _lastStyles);
+
     // Initial position can only to be set here!
     options = _applyInitialPosition(_initialCameraPosition, options);
 
@@ -271,7 +276,7 @@ class GoogleMapController {
     }
 
     // Create the map...
-    final gmaps.Map map = _createMap(_div, options);
+    final gmaps.Map map = _createMap(_div, options, _mapTheme);
     _googleMap = map;
 
     _attachMapEvents(map);
