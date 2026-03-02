@@ -229,6 +229,8 @@ class GoogleMapController {
     if (_overrideCreateMap != null) {
       return _overrideCreateMap!(div, options);
     }
+
+    options.colorScheme = gmaps.ColorScheme.DARK;
     return gmaps.Map(div, options);
   }
 
