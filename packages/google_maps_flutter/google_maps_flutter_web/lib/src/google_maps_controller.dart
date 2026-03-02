@@ -237,6 +237,8 @@ class GoogleMapController {
     if (_overrideCreateMap != null) {
       return _overrideCreateMap!(div, options);
     }
+    options.colorScheme = gmaps.ColorScheme.DARK;
+
     return gmaps.Map(div, options);
   }
 
@@ -469,6 +471,7 @@ class GoogleMapController {
   /// Updates the map options with a new list of [styles].
   void updateStyles(List<gmaps.MapTypeStyle> styles) {
     _lastStyles = styles;
+
     _setOptions(
       _configurationAndStyleToGmapsOptions(_lastMapConfiguration, styles),
     );
