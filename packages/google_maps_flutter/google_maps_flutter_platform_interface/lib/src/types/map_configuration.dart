@@ -35,6 +35,7 @@ class MapConfiguration {
     this.indoorViewEnabled,
     this.trafficEnabled,
     this.buildingsEnabled,
+    this.isDarkMode,
     String? mapId,
     @Deprecated('cloudMapId is deprecated. Use mapId instead.')
     String? cloudMapId,
@@ -129,6 +130,9 @@ class MapConfiguration {
   /// used.
   final MarkerType? markerType;
 
+  /// Indicates whether the map should use dark mode or light mode.
+  final bool? isDarkMode;
+
   /// Identifier that's associated with a specific cloud-based map style.
   ///
   /// See https://developers.google.com/maps/documentation/get-map-id
@@ -199,6 +203,7 @@ class MapConfiguration {
       buildingsEnabled:
           buildingsEnabled != other.buildingsEnabled ? buildingsEnabled : null,
       mapId: mapId != other.mapId ? mapId : null,
+      isDarkMode: isDarkMode != other.isDarkMode ? isDarkMode : null,
       style: style != other.style ? style : null,
       markerType: markerType != other.markerType ? markerType : null,
     );
@@ -234,6 +239,7 @@ class MapConfiguration {
       buildingsEnabled: diff.buildingsEnabled ?? buildingsEnabled,
       mapId: diff.mapId ?? mapId,
       style: diff.style ?? style,
+      isDarkMode: diff.isDarkMode ?? isDarkMode,
       markerType: diff.markerType ?? markerType,
     );
   }
@@ -261,6 +267,7 @@ class MapConfiguration {
       trafficEnabled == null &&
       buildingsEnabled == null &&
       mapId == null &&
+      isDarkMode == null &&
       style == null &&
       markerType == null;
 
@@ -295,6 +302,7 @@ class MapConfiguration {
         buildingsEnabled == other.buildingsEnabled &&
         mapId == other.mapId &&
         style == other.style &&
+        isDarkMode == other.isDarkMode &&
         markerType == other.markerType;
   }
 
@@ -321,6 +329,7 @@ class MapConfiguration {
         trafficEnabled,
         buildingsEnabled,
         mapId,
+        isDarkMode,
         style,
         markerType,
       ]);
