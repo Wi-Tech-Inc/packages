@@ -131,10 +131,11 @@ class MapConfiguration {
   /// used.
   final MarkerType? markerType;
 
-  /// Internal nullable value to preserve "no change" semantics in updates.
   final bool? _isDarkMode;
 
-  /// Indicates whether the map should use dark mode or light mode.
+  /// Returns whether the map should use dark mode.
+  ///
+  /// If the value has not been explicitly set, this returns `true`.
   bool get isDarkMode => _isDarkMode ?? true;
 
   /// Identifier that's associated with a specific cloud-based map style.

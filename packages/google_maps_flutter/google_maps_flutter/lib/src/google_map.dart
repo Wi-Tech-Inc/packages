@@ -156,7 +156,7 @@ class GoogleMap extends StatefulWidget {
   /// The initial position of the map's camera.
   final CameraPosition initialCameraPosition;
 
-  /// Whether to force dark mode for map color scheme (web implementation).
+  /// Indicates whether the map should be displayed in dark mode.
   final bool isDarkMode;
 
   /// The style for the map.
