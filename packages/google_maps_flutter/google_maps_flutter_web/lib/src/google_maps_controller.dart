@@ -229,6 +229,7 @@ class GoogleMapController {
     if (_overrideCreateMap != null) {
       return _overrideCreateMap!(div, options);
     }
+
     return gmaps.Map(div, options);
   }
 
@@ -260,6 +261,7 @@ class GoogleMapController {
   void init() {
     gmaps.MapOptions options = _configurationAndStyleToGmapsOptions(
         _lastMapConfiguration, _lastStyles);
+
     // Initial position can only to be set here!
     options = _applyInitialPosition(_initialCameraPosition, options);
 

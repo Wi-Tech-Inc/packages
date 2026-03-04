@@ -13,7 +13,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:google_maps/google_maps.dart' as gmaps;
 import 'package:google_maps/google_maps_visualization.dart' as visualization;

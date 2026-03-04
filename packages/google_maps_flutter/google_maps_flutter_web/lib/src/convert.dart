@@ -57,6 +57,10 @@ gmaps.MapOptions _configurationAndStyleToGmapsOptions(
     MapConfiguration configuration, List<gmaps.MapTypeStyle> styles) {
   final gmaps.MapOptions options = gmaps.MapOptions();
 
+  options.colorScheme = configuration.isDarkMode
+      ? gmaps.ColorScheme.DARK
+      : gmaps.ColorScheme.LIGHT;
+
   if (configuration.mapType != null) {
     options.mapTypeId = _gmapTypeIDForPluginType(configuration.mapType!);
   }
