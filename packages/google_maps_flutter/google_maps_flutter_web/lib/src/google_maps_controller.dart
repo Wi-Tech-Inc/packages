@@ -23,7 +23,6 @@ class GoogleMapController {
     MapObjects mapObjects = const MapObjects(),
     MapConfiguration mapConfiguration = const MapConfiguration(),
   })  : _mapId = mapId,
-        _isDarkMode = mapConfiguration.isDarkMode,
         _streamController = streamController,
         _initialCameraPosition = widgetConfiguration.initialCameraPosition,
         _markers = mapObjects.markers,
@@ -108,8 +107,6 @@ class GoogleMapController {
 
   // The internal ID of the map. Used to broadcast events, DOM IDs and everything where a unique ID is needed.
   final int _mapId;
-
-  final bool _isDarkMode;
 
   final CameraPosition _initialCameraPosition;
   final Set<Marker> _markers;
@@ -228,14 +225,10 @@ class GoogleMapController {
   DebugCreateMapFunction? _overrideCreateMap;
   DebugSetOptionsFunction? _overrideSetOptions;
 
-  gmaps.Map _createMap(
-      HTMLElement div, gmaps.MapOptions options, bool isDarkMode) {
+  gmaps.Map _createMap(HTMLElement div, gmaps.MapOptions options) {
     if (_overrideCreateMap != null) {
       return _overrideCreateMap!(div, options);
     }
-
-    options.colorScheme =
-        isDarkMode ? gmaps.ColorScheme.DARK : gmaps.ColorScheme.LIGHT;
 
     return gmaps.Map(div, options);
   }
@@ -278,7 +271,7 @@ class GoogleMapController {
     }
 
     // Create the map...
-    final gmaps.Map map = _createMap(_div, options, _isDarkMode);
+    final gmaps.Map map = _createMap(_div, options);
     _googleMap = map;
 
     _attachMapEvents(map);
