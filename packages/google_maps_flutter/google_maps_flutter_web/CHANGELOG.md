@@ -1,3 +1,7 @@
+## 0.6.4+2
+
+* Centers glyph-only Advanced Marker bitmaps before the parent pin rotation.
+
 ## 0.6.4+1
 
 * Fixes AdvancedMarker anchor handling.

@@ -497,8 +497,18 @@ Future<web.Node?> _advancedMarkerIconFromPinConfig(
         opacity: 1.0,
         // Always visible, as the visibility is handled by the parent marker.
         isVisible: true,
-        rotation: rotation,
+        // The parent pin applies rotation. Rotating the glyph as well spins a
+        // glyph-only marker around the pin tail instead of its visual center.
+        rotation: 0,
       );
+      if (glyphBitmap != null &&
+          glyphBitmap.isA<web.HTMLElement>() &&
+          config.backgroundColor == Colors.transparent &&
+          config.borderColor == Colors.transparent) {
+        // Glyph-only pins have no visible body, so shift the bitmap onto the
+        // pin center before the parent rotation.
+        (glyphBitmap as web.HTMLElement).style.transform = 'translateY(5px)';
+      }
       options.glyph = glyphBitmap;
     case null:
       break;
